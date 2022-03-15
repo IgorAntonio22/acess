@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title class="title">Todo App</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>       
+          <mat-form-field appearance="fill">
+            <mat-label>Add your new todo</mat-label>
+            <input class="input" matInput placeholder="Adicione uma tarefa" #inputTarefa (keyup.enter)="add(inputTarefa.value)">
+          </mat-form-field>
+        
+          <button appStyle class="addbutton" mat-raised-button color="primary" (click)="add(inputTarefa.value)">+</button>
+
+          <mat-list class="list">
+            <mat-list-item class="item" *ngFor="let tarefa of tarefas">
+             {{ tarefa }} 
+            <div appStyle>
+                <button mat-icon-button color="warn" aria-label="" (click)="remove(inputTarefa.value)"><mat-icon class="icon" svgIcon="lixeira"></mat-icon></button>
+            </div>
+            </mat-list-item>
+          </mat-list>
+
+          <mat-card-content class="content">
+            <p class="p">You have {{tarefas.length}} pending tasks</p> 
+            <button class="clearall" mat-raised-button color="primary">Clear all</button>
+          </mat-card-content>
+    </mat-card-content>
+</mat-card>
+
